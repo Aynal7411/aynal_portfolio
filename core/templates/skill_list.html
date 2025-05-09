@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Skills{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    .skill-card {
+        transition: transform 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .progress {
+        height: 25px;
+        border-radius: 12px;
+    }
+    
+    .progress-bar {
+        background-color: #4a90e2;
+    }
+    
+    .skill-icon {
+        font-size: 2.5rem;
+        color: #4a90e2;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5">Technical Skills</h1>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for skill in skills %}
+        <div class="col">
+            <div class="skill-card card h-100 p-4">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        {% if skill.icon %}
+                        <i class="{{ skill.icon }} skill-icon me-3"></i>
+                        {% endif %}
+                        <h3 class="card-title mb-0">{{ skill.name }}</h3>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <span class="badge bg-primary">
+                            {{ skill.get_level_display }}
+                        </span>
+                        <span class="text-muted ms-2">
+                            {{ skill.years_experience }} years experience
+                        </span>
+                    </div>
+                    
+                    <div class="progress mb-3">
+                        <div class="progress-bar" 
+                             role="progressbar" 
+                             style="width: {{ skill.proficiency }}%" 
+                             aria-valuenow="{{ skill.proficiency }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                            {{ skill.proficiency }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">No skills found.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

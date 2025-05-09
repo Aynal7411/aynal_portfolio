@@ -1,0 +1,99 @@
+<!-- templates/partials/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="{#}">
+            <i class="fas fa-code me-2"></i>DevPortfolio
+        </a>
+        
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" 
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" 
+                       href="{#}">
+                        <i class="fas fa-home me-1"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'projects' in request.path %}active{% endif %}" 
+                       href="{#}">
+                        <i class="fas fa-briefcase me-1"></i>Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'skills' in request.path %}active{% endif %}" 
+                       href="{#}">
+                        <i class="fas fa-tools me-1"></i>Skills
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'services' in request.path %}active{% endif %}" 
+                       href="{#}">
+                        <i class="fas fa-concierge-bell me-1"></i>Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'contact' in request.path %}active{% endif %}" 
+                       href="{#}">
+                        <i class="fas fa-envelope me-1"></i>Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .navbar {
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link {
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        color: #fff !important;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+    
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            padding-top: 1rem;
+        }
+        .nav-item {
+            margin: 0.5rem 0;
+        }
+        .nav-link::after {
+            display: none;
+        }
+    }
+</style>
