@@ -25,7 +25,8 @@ DEBUG = 'RENDER' not in os.environ
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['aynal-portfolio.onrender.com', 'localhost', '127.0.0.1']
+
     
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
